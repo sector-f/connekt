@@ -13,7 +13,7 @@ type player struct {
 
 func (p *player) play(url string) error {
 	ctx, stopper := context.WithCancel(context.Background())
-	cmd := exec.CommandContext(ctx, "mpv", url)
+	cmd := exec.CommandContext(ctx, "mpv", "--no-config", url)
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
 		stopper()
