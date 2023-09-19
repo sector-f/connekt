@@ -75,7 +75,9 @@ func main() {
 		eventClient := sse.NewClient("https://rekt.network/meta")
 		eventClient.SubscribeChanRaw(events)
 
-		ticker := time.NewTicker(5 * time.Minute)
+		refreshTime := 1 * time.Minute // The server should send a keepalive every minute
+
+		ticker := time.NewTicker(refreshTime)
 
 		for {
 			select {
@@ -86,7 +88,7 @@ func main() {
 				eventClient.Unsubscribe(events)
 				eventClient.SubscribeChanRaw(events)
 			case event := <-events:
-				ticker.Reset(5 * time.Minute)
+				ticker.Reset(refreshTime)
 
 				rcvdAt := time.Now()
 
