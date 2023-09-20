@@ -11,24 +11,20 @@ type player struct {
 }
 
 func newPlayer() *player {
+	h := mpv.Create()
+	mpv.Initialize(h)
+
 	return &player{
+		m:         h,
 		paused:    false,
 		isRunning: false,
 	}
 }
 
-func (p *player) play(url string) error {
-	if !p.isRunning {
-		h := mpv.Create()
-		mpv.Initialize(h)
-		p.m = h
-	}
-
+func (p *player) play(url string) {
 	mpv.Command(p.m, "loadfile "+url)
-	p.unpause()
 	p.isRunning = true
-
-	return nil
+	p.unpause()
 }
 
 func (p *player) pause() {
