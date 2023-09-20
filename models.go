@@ -99,6 +99,15 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.table.MoveUp(1)
 		case tea.MouseWheelDown:
 			m.table.MoveDown(1)
+		case tea.MouseRight:
+			idx := m.table.Cursor()
+
+			if idx == m.currentStation {
+				return m, cmd
+			}
+
+			m.currentStation = idx
+			m.player.play(m.streams[idx].streamURL)
 		}
 		return m, cmd
 	case eventMessage:
