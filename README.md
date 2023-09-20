@@ -9,7 +9,7 @@ TUI interface for [rekt.network](https://rekt.network)
 ## Keybinds
 
 * `enter` - Play the selected station
-* `j/k`,`down/up`: Move the selection up/down (respectively)
+* `j/k`,`down/up`: Move the selection down/up (respectively)
 * `p`: Pause the player
 * `s`: Stop the player
 * `q`: Quit the program
