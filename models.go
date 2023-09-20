@@ -79,6 +79,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			case false:
 				m.player.pause()
 			}
+		case "s":
+			m.player.stop()
+			m.currentStation = -1
 		case "enter":
 			idx := m.table.Cursor()
 
@@ -124,7 +127,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) View() string {
-	header := "\n c o n n e k t\n\n"
+	header := "\n c o n n e k t . f m\n\n"
 	headerHeight := lipgloss.Height(header)
 
 	tableView := m.table.View()
@@ -133,6 +136,9 @@ func (m model) View() string {
 	var footer string
 	if m.currentStation != -1 {
 		footer += "\n" + "      Now Playing: " + m.streams[m.currentStation].name
+		if m.player.paused {
+			footer += " (Paused)"
+		}
 	}
 	if !m.lastUpdated.IsZero() {
 		footer += "\n" + " Playlist Updated: " + m.lastUpdated.Format("2006-01-02 3:04:05 PM")
