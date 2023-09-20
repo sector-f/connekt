@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/charmbracelet/bubbles/table"
@@ -92,6 +93,14 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.currentStation = idx
 			m.player.play(m.streams[idx].streamURL)
 		}
+	case tea.MouseMsg:
+		switch msg.Type {
+		case tea.MouseWheelUp:
+			m.table.MoveUp(1)
+		case tea.MouseWheelDown:
+			m.table.MoveDown(1)
+		}
+		return m, cmd
 	case eventMessage:
 		stationIdx, ok := m.streamNames[msg.Station]
 		if !ok {
@@ -141,7 +150,7 @@ func (m model) View() string {
 		}
 	}
 	if !m.lastUpdated.IsZero() {
-		footer += "\n" + " Playlist Updated: " + m.lastUpdated.Format("2006-01-02 3:04:05 PM")
+		footer += fmt.Sprintf("\n Playlist Updated: %s", m.lastUpdated.Format("2006-01-02 3:04:05 PM"))
 	}
 	footerHeight := lipgloss.Height(footer)
 

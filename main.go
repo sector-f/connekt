@@ -68,7 +68,7 @@ func main() {
 	}
 
 	m := newModel(streams, streamMap)
-	program := tea.NewProgram(m, tea.WithAltScreen())
+	program := tea.NewProgram(m, tea.WithAltScreen(), tea.WithMouseAllMotion())
 
 	go func() {
 		events := make(chan *sse.Event)
