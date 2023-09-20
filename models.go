@@ -72,6 +72,13 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "q", "ctrl+c":
 			m.player.stop()
 			return m, tea.Quit
+		case "p":
+			switch m.player.paused {
+			case true:
+				m.player.unpause()
+			case false:
+				m.player.pause()
+			}
 		case "enter":
 			idx := m.table.Cursor()
 
