@@ -1,35 +1,25 @@
 package main
 
 import (
-	"context"
-	"io"
-	"os/exec"
+	mpv "lncn.dev/x/libmpv"
 )
 
 type player struct {
-	stdin   io.WriteCloser
-	stopper func()
+	m *mpv.Handle
+}
+
+func newPlayer() *player {
+	h := mpv.Create()
+	mpv.Initialize(h)
+	return &player{h}
 }
 
 func (p *player) play(url string) error {
-	ctx, stopper := context.WithCancel(context.Background())
-	cmd := exec.CommandContext(ctx, "mpv", "--no-config", url)
-	stdin, err := cmd.StdinPipe()
-	if err != nil {
-		stopper()
-		return err
-	}
-
-	p.stdin = stdin
-	p.stopper = stopper
-
-	go cmd.Run()
+	mpv.Command(p.m, "loadfile "+url)
 
 	return nil
 }
 
 func (p *player) stop() {
-	if p.stopper != nil {
-		p.stopper()
-	}
+	mpv.Command(p.m, "quit")
 }

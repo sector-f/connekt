@@ -58,7 +58,7 @@ func newModel(streams []stream, streamMap map[string]int) model {
 		streams:        streams,
 		streamNames:    streamMap,
 		currentStation: -1,
-		player:         &player{},
+		player:         newPlayer(),
 	}
 }
 
@@ -78,8 +78,6 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			if idx == m.currentStation {
 				return m, cmd
 			}
-
-			m.player.stop()
 
 			m.currentStation = idx
 			m.player.play(m.streams[idx].streamURL)

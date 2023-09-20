@@ -7,6 +7,7 @@ require (
 	github.com/charmbracelet/bubbletea v0.24.2
 	github.com/charmbracelet/lipgloss v0.8.0
 	github.com/r3labs/sse/v2 v2.10.0
+	lncn.dev/x v1.0.0
 )
 
 require (
