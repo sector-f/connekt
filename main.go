@@ -19,39 +19,39 @@ func main() {
 	streams := []stream{
 		{
 			name:      "REKT",
-			streamURL: "https://stream.nightride.fm:8443/rekt/aac_hifi.m3u8",
+			streamURL: "https://stream.rekt.network/hls/rekt/rekt.m3u8",
 		},
 		{
 			name:      "REKTORY",
-			streamURL: "https://stream.nightride.fm:8443/rektory/aac_hifi.m3u8",
+			streamURL: "https://stream.rekt.network/hls/rektory/rektory.m3u8",
 		},
 		{
 			name:      "NIGHTRIDE FM",
-			streamURL: "https://stream.nightride.fm:8443/nightride/aac_hifi.m3u8",
+			streamURL: "https://stream.rekt.network/hls/nightride/nightride.m3u8",
 		},
 		{
 			name:      "CHILLSYNTH FM",
-			streamURL: "https://stream.nightride.fm:8443/chillsynth/aac_hifi.m3u8",
+			streamURL: "https://stream.rekt.network/hls/chillsynth/chillsynth.m3u8",
 		},
 		{
 			name:      "DATAWAVE FM",
-			streamURL: "https://stream.nightride.fm:8443/datawave/aac_hifi.m3u8",
+			streamURL: "https://stream.rekt.network/hls/datawave/datawave.m3u8",
 		},
 		{
 			name:      "SPACESYNTH FM",
-			streamURL: "https://stream.nightride.fm:8443/spacesynth/aac_hifi.m3u8",
+			streamURL: "https://stream.rekt.network/hls/spacesynth/spacesynth.m3u8",
 		},
 		{
 			name:      "DARKSYNTH",
-			streamURL: "https://stream.nightride.fm:8443/darksynth/aac_hifi.m3u8",
+			streamURL: "https://stream.rekt.network/hls/darksynth/darksynth.m3u8",
 		},
 		{
 			name:      "HORRORSYNTH",
-			streamURL: "https://stream.nightride.fm:8443/horrorsynth/aac_hifi.m3u8",
+			streamURL: "https://stream.rekt.network/hls/horrorsynth/horrorsynth.m3u8",
 		},
 		{
 			name:      "EBSM",
-			streamURL: "https://stream.nightride.fm:8443/ebsm/aac_hifi.m3u8",
+			streamURL: "https://stream.rekt.network/hls/ebsm/ebsm.m3u8",
 		},
 	}
 
